@@ -108,9 +108,11 @@ function safeWriteFile(filePath, content) {
 
     // Check if file already exists
     if (fs.existsSync(filePath)) {
-      // Create backup with timestamp
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const backupPath = `${filePath}.new.${timestamp}`;
+      // Create backup with timestamp (format: YYYYMMDD-HHMMSS)
+      const now = new Date();
+      const timestamp = now.toISOString().replace(/[-:TZ.]/g, '').slice(0, 14);
+      const formatted = `${timestamp.slice(0, 8)}-${timestamp.slice(8)}`;
+      const backupPath = `${filePath}.new.${formatted}`;
       fs.writeFileSync(backupPath, content, 'utf8');
       result.backup = backupPath;
       result.path = backupPath;
