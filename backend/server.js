@@ -157,7 +157,11 @@ app.post('/api/generate-quiz', async (req, res) => {
       const jsonMatch = quizContent.match(/\[[\s\S]*\]/);
       quiz = JSON.parse(jsonMatch ? jsonMatch[0] : quizContent);
     } catch (parseError) {
-      quiz = { raw: quizContent };
+      console.warn('Nie udało się sparsować odpowiedzi jako JSON:', parseError.message);
+      quiz = { 
+        raw: quizContent,
+        parseError: parseError.message 
+      };
     }
 
     res.json({ 

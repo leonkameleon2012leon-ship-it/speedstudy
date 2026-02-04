@@ -74,7 +74,7 @@ try {
     if ($response.quiz -is [array]) {
         $questionNumber = 1
         foreach ($item in $response.quiz) {
-            Write-Host "Pytanie $questionNumber`: " -ForegroundColor Cyan -NoNewline
+            Write-Host "Pytanie $questionNumber: " -ForegroundColor Cyan -NoNewline
             Write-Host $item.question -ForegroundColor White
             
             if ($item.options) {

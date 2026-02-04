@@ -86,6 +86,16 @@ function generateAdditionalFlutterFiles(projectPath) {
 }
 
 /**
+ * Formatuje timestamp do formatu: YYYYMMDD-HHMMSS
+ * @param {Date} date - Data do sformatowania
+ * @returns {string} Sformatowany timestamp
+ */
+function formatTimestamp(date) {
+  const timestamp = date.toISOString().replace(/[-:TZ.]/g, '').slice(0, 14);
+  return `${timestamp.slice(0, 8)}-${timestamp.slice(8)}`;
+}
+
+/**
  * Bezpiecznie zapisuje plik - nie nadpisuje istniejących
  */
 function safeWriteFile(filePath, content) {
@@ -102,9 +112,7 @@ function safeWriteFile(filePath, content) {
     }
 
     if (fs.existsSync(filePath)) {
-      const now = new Date();
-      const timestamp = now.toISOString().replace(/[-:TZ.]/g, '').slice(0, 14);
-      const formatted = `${timestamp.slice(0, 8)}-${timestamp.slice(8)}`;
+      const formatted = formatTimestamp(new Date());
       const backupPath = `${filePath}.new.${formatted}`;
       fs.writeFileSync(backupPath, content, 'utf8');
       result.backup = backupPath;
