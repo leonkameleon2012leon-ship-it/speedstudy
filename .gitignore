@@ -1,0 +1,63 @@
+# Flutter build artifacts
+/build/
+*.apk
+*.ipa
+*.app
+
+# Dart compilation
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+pubspec.lock
+
+# IDE workspace files  
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# iOS specific
+ios/.generated/
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/.symlinks/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+
+# Android specific
+android/.gradle/
+android/captures/
+android/local.properties
+android/key.properties
+android/.cxx/
+*.jks
+*.keystore
+
+# Platform config
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Test and coverage
+coverage/
+test/.test_coverage.dart
+
+# Environment and secrets
+.env
+*.env
+secrets.json
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
