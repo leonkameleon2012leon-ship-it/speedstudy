@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import '../models/meal.dart';
@@ -40,7 +41,7 @@ class NotificationService {
   /// Handle notification tap
   void _onNotificationTapped(NotificationResponse response) {
     // Handle notification tap - could navigate to meal details
-    print('Notification tapped: ${response.payload}');
+    debugPrint('Notification tapped: ${response.payload}');
   }
 
   /// Request notification permissions

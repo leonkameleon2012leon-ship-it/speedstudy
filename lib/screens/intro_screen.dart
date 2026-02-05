@@ -25,7 +25,7 @@ class _IntroScreenState extends State<IntroScreen>
 
   final List<String> _greetings = [
     'Smacznego! 🍽️',
-    'Have a great day at work! 💼',
+    'Time to eat well! 💚',
     'Enjoy your meal! 😊',
     'Bon Appétit! 🌟',
   ];

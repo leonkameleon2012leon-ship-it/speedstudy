@@ -392,19 +392,23 @@ class DishBuilder {
   bool hasContent() => dishNameController.text.isNotEmpty;
 
   Dish build() {
+    final timestamp = DateTime.now().microsecondsSinceEpoch;
+    var ingredientCounter = 0;
+    
     final ingredientsList = ingredientsText.isEmpty
         ? <Ingredient>[]
         : ingredientsText.split(',').map((part) {
             final trimmed = part.trim();
+            ingredientCounter++;
             return Ingredient(
-              id: 'ing_${DateTime.now().millisecondsSinceEpoch}_${trimmed.hashCode}',
+              id: 'ing_${timestamp}_$ingredientCounter',
               name: trimmed,
               amount: '1 serving',
             );
           }).toList();
 
     return Dish(
-      id: 'dish_${DateTime.now().millisecondsSinceEpoch}',
+      id: 'dish_${timestamp}_${dishNameController.text.hashCode.abs()}',
       name: dishNameController.text,
       ingredients: ingredientsList,
     );
